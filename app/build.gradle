@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-def gitTag = 'git describe --tags --abbrev=0'.execute([], project.rootDir).text
+def gitTag = 'git describe --tags --abbrev=0'.execute([], project.rootDir).text.trim()
 def gitCommitCount = Integer.parseInt('git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
 def gitCommitAfterLatestTagCount = Integer.parseInt(('git rev-list ' + gitTag
         + '..HEAD --count').execute([], project.rootDir).text.trim())
@@ -14,7 +14,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 29
         versionCode gitCommitCount
-        versionName gitTag + '.' + gitCommitAfterLatestTagCount
+        versionName (gitTag + '.' + gitCommitAfterLatestTagCount)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

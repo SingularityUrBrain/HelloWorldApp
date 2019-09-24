@@ -8,32 +8,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 
-public class PermissionManager {
+class PermissionManager {
 
-    private Context context;
     private SessionManager sessionManager;
 
-    public PermissionManager(Context context) {
-        this.context = context;
+    PermissionManager(Context context) {
         sessionManager = new SessionManager(context);
     }
 
-    public boolean shouldAskPermission() {
+    private boolean shouldAskPermission() {
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
     }
 
     private boolean shouldAskPermission(Context context, String permission) {
         if (shouldAskPermission()) {
             int permissionResult = ActivityCompat.checkSelfPermission(context, permission);
-            if (permissionResult != PackageManager.PERMISSION_GRANTED) {
-                return true;
-            }
+            return permissionResult != PackageManager.PERMISSION_GRANTED;
         }
         return false;
     }
 
 
-    public void checkPermission(Context context, String permission, PermissionAskListener listener) {
+    void checkPermission(Context context, String permission, PermissionAskListener listener) {
 
         if (shouldAskPermission(context, permission)) {
             if (ActivityCompat.shouldShowRequestPermissionRationale((AppCompatActivity) context, permission)) {
@@ -43,7 +39,6 @@ public class PermissionManager {
                     sessionManager.firstTimeAskingPermission(permission, false);
                     listener.onNeedPermission();
                 } else {
-
                     listener.onPermissionPreviouslyDeniedWithNeverAskAgain();
                 }
             }
