@@ -1,0 +1,15 @@
+*.apk
+*.ap_
+
+*.iml
+.idea
+.gradle
+build/
+proguard/
+proguard-project.txt
+proguard-rules.pro
+local.properties
+.DS_Store
+/captures
+.externalNativeBuild
+.cxx

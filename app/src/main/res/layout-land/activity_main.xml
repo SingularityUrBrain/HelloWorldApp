@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/ButtonStyle"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="150dp"
+        android:onClick="displayVersionName"
+        android:text="@string/button_display_version_name_text" />
+
+    <Button
+        android:id="@+id/display_id_button"
+        style="@style/ButtonStyle"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/button2"
+        android:layout_marginStart="40dp"
+        android:text="@string/button_display_android_id" />
+
+</RelativeLayout>

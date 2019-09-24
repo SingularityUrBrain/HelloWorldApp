@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HelloWorldApp</string>
+    <string name="button_display_version_name_text">Display version name</string>
+    <string name="button_display_android_id">Display android ID</string>
+</resources>
